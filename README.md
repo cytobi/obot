@@ -29,6 +29,8 @@ GUCCIID=server_id_of_server_in_which_you_are_competing
 JARVISIMG=picture_of_competing_bot_sending_a_message
 ```
 
+Use > to give the bot commands, try >list for example.
+
 ## Contributors
 - [cytobi](https://github.com/cytobi)
 
