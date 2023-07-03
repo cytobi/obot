@@ -209,7 +209,7 @@ async def on_message(message):
 
         #returns code info
         if cmd.startswith("code"):
-            await message.channel.send("This bot is running now running on a Raspberry Pi and the code isn't public anymore :(")
+            await message.channel.send("You can find the code at https://github.com/cytobi/obot")
 
         #tests loops
         if cmd.startswith("looptest"):
