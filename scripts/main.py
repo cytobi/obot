@@ -7,6 +7,7 @@ from datetime import datetime #for printing time
 import time #basic time operations
 import os #get environment variables
 from dotenv import load_dotenv #load env variables
+from stablediff import get_image # for stable diffusion shenanigans
 
 #print debug to cmd?
 dodebug = False
@@ -306,6 +307,20 @@ async def on_message(message):
                     await message.channel.send("Error: could not fetch that user")
             except:
                 await message.channel.send("Error: not a valid id")
+        
+        if cmd.startswith("stablediff"):
+            if "-h" in cmd:
+                await message.channel.send("Usage: >stablediff -p <prompt> -np <negative prompt> -r <resolution>\nresolution can be one of: portrait, square, landscape\nyou can also use -nb and -nnb to disable base prompt and negative base promt\n\nExample: >stablediff -p \"a cat\" -np \"a dog\" -r \"portrait\"\n\nthis tool is **very unstable** and might not work")
+            else:
+                user_key = os.getenv('STABLEDIFFUSERKEY')
+                image_name = await get_image(message, user_key)
+                if image_name == None:
+                    await message.channel.send("Error: could not get image")
+                else:
+                    with open(image_name, 'rb') as image:
+                        image = discord.File(image, filename="image.png")
+                        await message.channel.send(file=image)
+            
     
     #check for nabends
     if any(word in message.content.lower().replace(" ", "").replace("'", "") for word in nabends):

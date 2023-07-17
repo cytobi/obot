@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# stablediff image files
+/scripts/latest_stablediff_img.png
