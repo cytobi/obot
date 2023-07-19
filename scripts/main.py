@@ -133,7 +133,7 @@ async def on_ready():
 @client.event
 async def on_message(message):
 
-    global jarvisTime #when used we use global variable
+    global jarvisTime, loopkill #when used we use global variable
 
     #message from bot itself
     if message.author == client.user:
@@ -150,8 +150,8 @@ async def on_message(message):
         cmd = message.content[1:]
 
         #list of commands
-        if cmd.startswith("list"):
-            await message.channel.send("Commands:" + "\n\n>test\n*tests the bot*" + "\n\n>quote\n*returns a random quote*" + "\n\n>tableflip\n*returns tableflip emote*" + "\n\n>playing <details>\n*changes the bots status to \"Playing <details>\"*" + "\n\n>watching <details>\n*changes the bots status to \"Watching <details>\"*" + "\n\n>vote <topic>\n*creates yes/no vote on <topic>*" + "\n\n>amongusimg\n*returns the glorious among us image*" + "\n\n>amongusvote\n*combines >amongusimg and >vote*" + "\n\n>latestchannel\n*returns the last text channel in which the bot was active*" + "\n\n>code\n*returns url to code for this bot*"  + "\n\n>runthrough <true/false>\n*defines if bot responds to nabend, etc*" + "\n\n>looptest <interval>\n*test a loop with interval <interval>*" + "\n\n>loopkill\n*kills all loops (e.g. spam)*"  + "\n\n>spam <?id> <mention/userid>\n*starts spamming a user defined by mention or user id*"  + "\n\n>authorize <userid>\n*authorizes a user to give commands to this bot*"  + "\n\n>deauthorize <userid>\n*deauthorizes a user to give commands to this bot*")
+        if cmd.startswith("list") or cmd.startswith("help"):
+            await message.channel.send("Commands:" + "\n\n>test\n*tests the bot*" + "\n\n>quote\n*returns a random quote*" + "\n\n>tableflip\n*returns tableflip emote*" + "\n\n>lyrics\n*returns the lyrics to the song you are listening to*" + "\n\n>profilepic <userid>\n*returns profilepic of user with that id*" + "\n\n>stablediff <options>\n*create images using stable diffusion*" + "\n\n>stablediff -h\n*shows help for stablediff command*" + "\n\n>playing <details>\n*changes the bots status to \"Playing <details>\"*" + "\n\n>watching <details>\n*changes the bots status to \"Watching <details>\"*" + "\n\n>vote <topic>\n*creates yes/no vote on <topic>*" + "\n\n>code\n*returns url to code for this bot*"  + "\n\n>runthrough <true/false>\n*defines if bot responds to nabend, etc*" + "\n\n>looptest <interval>\n*test a loop with interval <interval>*" + "\n\n>loopkill\n*kills all loops (e.g. spam)*"  + "\n\n>spam <?id> <mention/userid>\n*starts spamming a user defined by mention or user id*")
 
         #bot test
         if cmd.startswith("test"):
